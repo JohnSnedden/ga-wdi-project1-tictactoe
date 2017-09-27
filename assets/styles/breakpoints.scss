@@ -1,0 +1,9 @@
+@import 'breakpoint';
+
+body {
+  @include breakpoint(tiny) {
+    background-color: $background-color-alt1;
+    margin: $vertical-margin 20px;
+    max-width: 100%;
+  }
+}

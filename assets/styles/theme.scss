@@ -1,0 +1,43 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+body {
+  // background-color: $background-color;
+  color: $font-color;
+  // float: none;
+  // margin: 0 auto;
+  // max-width: $max-width;
+}
+
+.header-container {
+  background-color: $background-color-alt1;
+}
+
+.body-container {
+  background-color: $background-color-alt2;
+}
+
+.footer-container {
+  background-color: $background-color-alt3;
+}
+
+.box {
+  border: 1px solid $black;
+  text-align: center;
+  //   display: inline-block;
+  //   float: left;
+}
+
+// .row {
+//   border-bottom: 1px solid $black;
+//   border-top: 1px solid $black;
+// }
+
+
+
+// test border
+// .div {
+//   border: 1px solid $black;
+// }
+
+// temporary rules
