@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic-Tac-Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,14 +12,43 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+      <div class="header-container col-xs-12 col-sm-12 col-md-12">
+        <div class="header-content">
+          <h1>Tic-Tac-Toe</h1>
+        </div>
+        <nav class="nav-bar">
+          <div class="nav">
+            nav bar ...
+          </div>
+        </nav>
+      </div>
+
+      <div class="body-container">
+          <div class="game-board">
+            <div class="row">
+              <div class="col-xs-2 col-sm-2 col-md-3 box grid-ul">X</div>
+              <div class="col-xs-2 col-sm-2 col-md-3 box grid-uc">O</div>
+              <div class="col-xs-2 col-sm-2 col-md-3 box grid-ur">X</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-2 col-sm-2 col-md-3 box grid-ml">O</div>
+              <div class="col-xs-2 col-sm-2 col-md-3 box grid-mc">X</div>
+              <div class="col-xs-2 col-sm-2 col-md-3 box grid-mr">O</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-2 col-sm-2 col-md-3 box grid-bl">X</div>
+              <div class="col-xs-2 col-sm-2 col-md-3 box grid-bc">O</div>
+              <div class="col-xs-2 col-sm-2 col-md-3 box grid-br">X</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-container col-xs-6 col-sm-6 col-md-9">
+          <div class="footer-content">
+            <p>made by john</p>
+          </div>
+        </div>
+
     </body>
 </html>
