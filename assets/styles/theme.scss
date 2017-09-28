@@ -10,34 +10,69 @@ body {
 }
 
 .header-container {
-  background-color: $background-color-alt1;
+  background-color: $header-color;
+  padding: 0;
 }
 
 .body-container {
-  background-color: $background-color-alt2;
+  background-color: $background-color;
+  padding: 0;
+}
+
+.info-container {
+  background-color: $info-bar-color;
+  clear: both;
+  font-size: 20px;
+  margin-top: 25px;
+  padding: 0;
+  text-align: center;
+}
+
+.x-info {
+  float: left;
+}
+
+.o-info {
+  float: left;
+}
+
+.turn-indicator-container {
+  clear: left;
+}
+
+.game-board {
+  background-color: $game-board-color;
+  clear: both;
+  margin-top: 100px;
+  padding: 0;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
 }
 
 .footer-container {
-  background-color: $background-color-alt3;
+  background-color: $footer-color;
+  padding: 0;
 }
 
 .box {
   border: 1px solid $black;
+  height: 5em;
+  padding: 0;
   text-align: center;
   //   display: inline-block;
   //   float: left;
 }
 
-// .row {
-//   border-bottom: 1px solid $black;
-//   border-top: 1px solid $black;
-// }
+.box > p {
+  color: $font-color-bright;
+  font-size: 50px;
+}
 
-
-
-// test border
-// .div {
-//   border: 1px solid $black;
-// }
-
-// temporary rules
+// temp
+div {
+  border: 1px solid $black;
+}
