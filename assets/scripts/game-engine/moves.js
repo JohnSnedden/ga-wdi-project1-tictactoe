@@ -1,9 +1,12 @@
 'use strict'
 
+const outcome = require('./outcome.js')
+
 // who is the current player
 // which square was clicked
 // check if square has been played
 // change the square value to the player symbol
+// *** check for a win ***
 // change the turn indicator to other player
 
 const onPlayerMove = function (event) {
@@ -44,6 +47,11 @@ const onPlayerMove = function (event) {
   console.log('clicked square is ', clickedSquare)
   if (isSquareOpen(clickedSquare) === true) {
     updateSquare(currentPlayer, clickedSquare)
+
+    // did player win game
+    const playerWonGame = outcome.winningMove(currentPlayer, clickedSquare)
+    console.log('playerWonGame is ', playerWonGame)
+
     updatePlayerTurn(currentPlayer)
   }
 }
