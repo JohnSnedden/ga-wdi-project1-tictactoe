@@ -1,7 +1,29 @@
 'use strict'
 
-// function for click on square
-// 1. check if square is open
-//     (flash square red if not open)
-// 2. change value of the sqaure to player symbol
-// 3. change turn indicator to other player
+// const getFormFields = require('../../../lib/get-form-fields')
+
+// change turn indicator
+const playerTurn = function () {
+  console.log('turn indicator was ', $('#turn-indicator').text())
+  if ($('#turn-indicator').text() === '' || $('#turn-indicator').text() === 'O') {
+    $('#turn-indicator').text('X')
+  } else {
+    $('#turn-indicator').text('O')
+  }
+  console.log('turn indicator is now ', $('#turn-indicator').text())
+}
+
+// identify which game square was clicked
+const onSquareClick = function (event) {
+  const square = $(this).attr('id')
+  console.log('in events.js user clicked ', square)
+  playerTurn()
+}
+
+const addHandlers = function () {
+  $('.gameSquare').on('click', onSquareClick)
+}
+
+module.exports = {
+  addHandlers
+}
