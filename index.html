@@ -21,9 +21,40 @@
         <nav class="nav-bar">
           <div class="nav">
             <p>nav bar ...</p>
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authModal" data-whatever="Sign Up">signup</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authModal" data-whatever="Sign In">signin</button> -->
           </div>
         </nav>
       </div>
+
+      <!-- <div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Authentication</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="authForm">
+                <div class="form-group">
+                  <label for="email" class="form-control-label">Email</label>
+                  <input name="credentials[email]" type="text" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                  <label for="password" class="form-control-label">Password</label>
+                  <input name="credentials[password]" type="text" class="form-control" id="password">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="btn-primary">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
 
       <div class="body-container col-xs-6 col-sm-8 col-md-12">
 
@@ -92,6 +123,21 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <section id="message"></section>
+
+        <div style="container-fluid">
+          <form id="sign-up">
+            <fieldset>
+              <legend>Sign up</legend>
+              <input type="text" name="credentials[email]" placeholder="email">
+              <input type="password" name="credentials[password]" placeholder="password">
+              <input type="password" name="credentials[password_confirmation]" placeholder="password confirmation">
+              <input type="submit" name="submit" value="Sign up!">
+            </fieldset>
+          </form>
+
         </div>
 
         <div class="footer-container col-xs-6 col-sm-8 col-md-12">
