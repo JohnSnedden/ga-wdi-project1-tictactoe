@@ -107,6 +107,18 @@ const onPlayerMove = function (event) {
   console.log('-------------------------')
 }
 
+const resetGameBoard = function () {
+  for (let i = 0; i < 9; i++) {
+    $('#' + i + ' > p').text('')
+  }
+  $('#turn-indicator').text('x')
+  $('#game-outcome-info > p').text('')
+  gameComplete = false
+  gameResult = null
+  movesPlayed = 0
+}
+
 module.exports = {
-  onPlayerMove
+  onPlayerMove,
+  resetGameBoard
 }
