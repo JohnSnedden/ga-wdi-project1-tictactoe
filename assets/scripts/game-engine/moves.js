@@ -12,6 +12,8 @@ let movesPlayed = 0
 // change the square value to the player symbol
 // check for a win
 // change the turn indicator to other player
+// check for a draw
+// update display to show result
 
 const onPlayerMove = function (event) {
   // identify current player
@@ -74,16 +76,30 @@ const onPlayerMove = function (event) {
     }
   }
 
+  const gameCompleteUpdates = function (gameResult) {
+    console.log('were inside the gameCompleteUpdates function')
+    $('#game-outcome-info > p').text(gameResult)
+    // $('#player-turn-info').hide()
+    // $('#game-outcome-info').show()
+    // const x = document.getElementById('player-turn-info')
+    // console.log('x is ', x)
+    // x.style.display = 'none'
+    // $('#game-outcome-info').style.display = 'block'
+  }
+
   const currentPlayer = currentPlayerIs()
   const clickedSquare = $(this).attr('id')
   console.log('player', currentPlayer, 'clicked square', clickedSquare)
-  if (isSquareOpen(clickedSquare) === true && gameComplete === false) {
+  if (gameComplete === false && isSquareOpen(clickedSquare) === true) {
     updateSquare(currentPlayer, clickedSquare)
     didPlayerWin(currentPlayer, clickedSquare)
-    if (gameComplete === false) {
-      updatePlayerTurn(currentPlayer)
-      wasGameDrawn(movesPlayed)
-    }
+  }
+  if (gameComplete === false) {
+    updatePlayerTurn(currentPlayer)
+    wasGameDrawn(movesPlayed)
+  }
+  if (gameComplete === true) {
+    gameCompleteUpdates(gameResult)
   }
   console.log('movesPlayed is', movesPlayed)
   console.log('gameResult is', gameResult)
