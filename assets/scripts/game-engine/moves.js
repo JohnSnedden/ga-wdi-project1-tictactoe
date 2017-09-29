@@ -1,7 +1,10 @@
 'use strict'
 
 const outcome = require('./outcome.js')
+
 let gameComplete = false
+let gameResult = null
+let movesPlayed = 0
 
 // who is the current player
 // which square was clicked
@@ -29,6 +32,7 @@ const onPlayerMove = function (event) {
   // update board with user move
   const updateSquare = function (currentPlayer, clickedSquare) {
     $('#' + clickedSquare + ' > p').text(currentPlayer)
+    // also change mouseover behavior for played square
     $('#' + clickedSquare).mouseleave(function () {
       $('#' + clickedSquare).css('cursor', 'not-allowed')
     })
@@ -44,30 +48,47 @@ const onPlayerMove = function (event) {
   // did player win?
   const didPlayerWin = function (currentPlayer, clickedSquare) {
     const playerWonGame = outcome.didPlayerWin(currentPlayer, clickedSquare)
-    console.log('playerWonGame is ', playerWonGame)
     if (playerWonGame === true) {
       gameComplete = true
+      gameResult = currentPlayer + 'win'
       allSquaresNotAllowed()
+      movesPlayed++
     }
   }
 
-  // change turn indicator
+  // change turn indicator and update count of moves played
   const updatePlayerTurn = function (currentPlayer) {
     if (currentPlayer === '' || currentPlayer === 'o') {
       $('#turn-indicator').text('x')
     } else {
       $('#turn-indicator').text('o')
     }
+    movesPlayed++
+  }
+
+  const wasGameDrawn = function (movesPlayed) {
+    if (movesPlayed === 9) {
+      gameComplete = true
+      gameResult = 'draw'
+      allSquaresNotAllowed()
+    }
   }
 
   const currentPlayer = currentPlayerIs()
   const clickedSquare = $(this).attr('id')
-  console.log('clicked square is ', clickedSquare)
+  console.log('player', currentPlayer, 'clicked square', clickedSquare)
   if (isSquareOpen(clickedSquare) === true && gameComplete === false) {
     updateSquare(currentPlayer, clickedSquare)
     didPlayerWin(currentPlayer, clickedSquare)
-    updatePlayerTurn(currentPlayer)
+    if (gameComplete === false) {
+      updatePlayerTurn(currentPlayer)
+      wasGameDrawn(movesPlayed)
+    }
   }
+  console.log('movesPlayed is', movesPlayed)
+  console.log('gameResult is', gameResult)
+  console.log('gameComplete is', gameComplete)
+  console.log('-------------------------')
 }
 
 module.exports = {
