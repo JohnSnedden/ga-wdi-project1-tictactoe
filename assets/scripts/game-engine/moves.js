@@ -1,12 +1,13 @@
 'use strict'
 
 const outcome = require('./outcome.js')
+let gameComplete = false
 
 // who is the current player
 // which square was clicked
 // check if square has been played
 // change the square value to the player symbol
-// *** check for a win ***
+// check for a win
 // change the turn indicator to other player
 
 const onPlayerMove = function (event) {
@@ -33,6 +34,23 @@ const onPlayerMove = function (event) {
     })
   }
 
+  // change cursor to 'not-allowed' for all squares
+  const allSquaresNotAllowed = function () {
+    for (let i = 0; i < 9; i++) {
+      $('#' + i).css('cursor', 'not-allowed')
+    }
+  }
+
+  // did player win?
+  const didPlayerWin = function (currentPlayer, clickedSquare) {
+    const playerWonGame = outcome.didPlayerWin(currentPlayer, clickedSquare)
+    console.log('playerWonGame is ', playerWonGame)
+    if (playerWonGame === true) {
+      gameComplete = true
+      allSquaresNotAllowed()
+    }
+  }
+
   // change turn indicator
   const updatePlayerTurn = function (currentPlayer) {
     if (currentPlayer === '' || currentPlayer === 'o') {
@@ -45,13 +63,9 @@ const onPlayerMove = function (event) {
   const currentPlayer = currentPlayerIs()
   const clickedSquare = $(this).attr('id')
   console.log('clicked square is ', clickedSquare)
-  if (isSquareOpen(clickedSquare) === true) {
+  if (isSquareOpen(clickedSquare) === true && gameComplete === false) {
     updateSquare(currentPlayer, clickedSquare)
-
-    // did player win game
-    const playerWonGame = outcome.winningMove(currentPlayer, clickedSquare)
-    console.log('playerWonGame is ', playerWonGame)
-
+    didPlayerWin(currentPlayer, clickedSquare)
     updatePlayerTurn(currentPlayer)
   }
 }

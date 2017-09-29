@@ -1,9 +1,6 @@
 'use strict'
 
-const winningMove = function (currentPlayer, clickedSquare) {
-  console.log('currentPlayer is ', currentPlayer)
-  console.log('clicked square is ', clickedSquare)
-
+const didPlayerWin = function (currentPlayer, clickedSquare) {
   if (clickedSquare === '0') {
     if (($('#1 > p').text() === currentPlayer && ($('#2 > p').text() === currentPlayer)) || ($('#3 > p').text() === currentPlayer && ($('#6 > p').text() === currentPlayer)) || ($('#4 > p').text() === currentPlayer && ($('#8 > p').text() === currentPlayer))) {
       return true
@@ -41,8 +38,9 @@ const winningMove = function (currentPlayer, clickedSquare) {
       return true
     }
   }
+  return false
 }
 
 module.exports = {
-  winningMove
+  didPlayerWin
 }
