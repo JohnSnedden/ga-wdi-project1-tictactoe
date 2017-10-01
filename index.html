@@ -26,6 +26,9 @@
             <form id="new-game">
               <input type="submit" value="New Game">
             </form>
+            <form id="player-stats">
+              <input type="submit" value="My Game Stats">
+            </form>
 
           </div>
         </nav>
@@ -162,7 +165,7 @@
           <form id="change-password">
             <fieldset>
               <legend>Change Password!</legend>
-              <input type="text" name="passwords[old]" placeholder="existing passowrd">
+              <input type="text" name="passwords[old]" placeholder="existing password">
               <input type="password" name="passwords[new]" placeholder="new password">
               <input type="submit" name="submit" value="Change Password!">
             </fieldset>
@@ -178,6 +181,12 @@
               <input type="submit" name="submit" value="Sign Out!">
             </fieldset>
           </form>
+        </div>
+
+        <hr>
+
+        <div class="container-fluid" id="playerStats">
+          <p></p>
         </div>
 
         <div class="footer-container col-xs-6 col-sm-8 col-md-12">

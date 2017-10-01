@@ -12,8 +12,20 @@ const onNewGame = function (event) {
   moves.resetGameBoard()
 }
 
+const onPlayerStats = function (event) {
+  event.preventDefault()
+  api.playerGamesComplete()
+    .then(ui.playerGamesCompleteSuccess)
+    .catch(ui.playerGamesCompleteFailure)
+  api.playerGamesAll()
+    .then(ui.playerGamesAllSuccess)
+    .catch(ui.playerGamesAllFailure)
+    .then()
+}
+
 const addHandlers = function () {
   $('#new-game').on('submit', onNewGame)
+  $('#player-stats').on('submit', onPlayerStats)
 }
 
 module.exports = {

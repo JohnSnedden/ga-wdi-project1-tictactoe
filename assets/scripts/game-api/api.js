@@ -26,7 +26,29 @@ const updateGame = function (data) {
   })
 }
 
+const playerGamesAll = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games/',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const playerGamesComplete = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games?over=true',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   newGame,
-  updateGame
+  updateGame,
+  playerGamesAll,
+  playerGamesComplete
 }

@@ -21,12 +21,44 @@ const updateGameSuccess = function (data) {
 
 const updateGameFailure = function (error) {
   console.error(error)
-  $('#message').text('Error starting new game')
+  $('#message').text('Error updating game data on server')
+}
+
+const playerGamesCompleteSuccess = function (data) {
+  $('#message').text('Game data retrieved sussessfully')
+  store.gamesComplete = data
+  const playerGamesCompleted = store.gamesComplete.games.length
+  console.log('gamesComplete length is ', playerGamesCompleted)
+}
+
+const playerGamesCompleteFailure = function (error) {
+  console.error(error)
+  $('#message').text('Error retrieving game stats')
+}
+
+const playerGamesAllSuccess = function (data) {
+  $('#message').text('Game data retrieved sussessfully')
+  store.gamesAll = data
+  const playerGamesPlayed = store.gamesAll.games.length
+  const playerGamesCompleted = store.gamesComplete.games.length
+  console.log('gamesAll length is ', playerGamesPlayed)
+  // const statsText = 'You started ' + playerGamesPlayed + ' games, and completed ' + playerGamesCompleted + ' of them'
+  // console.log('statsText is: ', statsText)
+  $('#playerStats > p').text('You have played ' + playerGamesPlayed + ' games, of which you completed ' + playerGamesCompleted + ' games.')
+}
+
+const playerGamesAllFailure = function (error) {
+  console.error(error)
+  $('#message').text('Error retrieving game stats')
 }
 
 module.exports = {
   newGameSuccess,
   newGameFailure,
   updateGameSuccess,
-  updateGameFailure
+  updateGameFailure,
+  playerGamesCompleteSuccess,
+  playerGamesCompleteFailure,
+  playerGamesAllSuccess,
+  playerGamesAllFailure
 }
