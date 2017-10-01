@@ -13,7 +13,20 @@ const newGameFailure = function (error) {
   $('#message').text('Error starting new game')
 }
 
+const updateGameSuccess = function (data) {
+  $('#message').text('Game updated sussessfully')
+  store.game = data.game
+  console.log('store.game is ', store.game)
+}
+
+const updateGameFailure = function (error) {
+  console.error(error)
+  $('#message').text('Error starting new game')
+}
+
 module.exports = {
   newGameSuccess,
-  newGameFailure
+  newGameFailure,
+  updateGameSuccess,
+  updateGameFailure
 }

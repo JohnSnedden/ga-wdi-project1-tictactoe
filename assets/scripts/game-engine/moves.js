@@ -1,21 +1,15 @@
 'use strict'
 
 const outcome = require('./outcome.js')
+const gameapi = require('../game-api/api.js')
+const gameapiui = require('../game-api/ui.js')
 
 let gameComplete = false
 let gameResult = null
 let movesPlayed = 0
 
-// who is the current player
-// which square was clicked
-// check if square has been played
-// change the square value to the player symbol
-// check for a win
-// change the turn indicator to other player
-// check for a draw
-// update display to show result
-
 const onPlayerMove = function (event) {
+  console.log('------------------- NEW CLICK DATA STARTS HERE -------------------')
   // identify current player
   const currentPlayerIs = function () {
     const currentPlayerIndicator = $('#turn-indicator').text()
@@ -34,10 +28,11 @@ const onPlayerMove = function (event) {
   // update board with user move
   const updateSquare = function (currentPlayer, clickedSquare) {
     $('#' + clickedSquare + ' > p').text(currentPlayer)
-    // also change mouseover behavior for played square
-    $('#' + clickedSquare).mouseleave(function () {
-      $('#' + clickedSquare).css('cursor', 'not-allowed')
-    })
+    // also change mouseover behavior for played square *** not working correctly so commented out ***
+    // $('#' + clickedSquare).mouseleave(function () {
+    //   $('#' + clickedSquare).css('cursor', 'not-allowed')
+    //   console.log('mouseleave happened')
+    // })
   }
 
   // change cursor to 'not-allowed' for all squares
@@ -54,8 +49,23 @@ const onPlayerMove = function (event) {
       gameComplete = true
       gameResult = currentPlayer + 'win'
       allSquaresNotAllowed()
-      movesPlayed++
     }
+  }
+
+  // update game data on server
+  const updateGame = function (currentPlayer, clickedSquare, gameComplete) {
+    const data = {
+      'game': {
+        'cell': {
+          'index': clickedSquare,
+          'value': currentPlayer
+        },
+        'over': gameComplete
+      }
+    }
+    gameapi.updateGame(data)
+      .then(gameapiui.updateGameSuccess)
+      .catch(gameapiui.updateGameFailure)
   }
 
   // change turn indicator and update count of moves played
@@ -76,8 +86,8 @@ const onPlayerMove = function (event) {
     }
   }
 
-  const gameCompleteUpdates = function (gameResult) {
-    console.log('were inside the gameCompleteUpdates function')
+  const displayGameResult = function (gameResult) {
+    console.log('were inside the displayGameResult function')
     $('#game-outcome-info > p').text(gameResult)
     // $('#player-turn-info').hide()
     // $('#game-outcome-info').show()
@@ -87,29 +97,40 @@ const onPlayerMove = function (event) {
     // $('#game-outcome-info').style.display = 'block'
   }
 
-  const currentPlayer = currentPlayerIs()
-  const clickedSquare = $(this).attr('id')
-  console.log('player', currentPlayer, 'clicked square', clickedSquare)
-  if (gameComplete === false && isSquareOpen(clickedSquare) === true) {
-    updateSquare(currentPlayer, clickedSquare)
-    didPlayerWin(currentPlayer, clickedSquare)
-  }
+  // *** MAIN GAME FLOW FOR EACH BOARD CLICK ***
+  // check game is not already over
   if (gameComplete === false) {
-    updatePlayerTurn(currentPlayer)
-    wasGameDrawn(movesPlayed)
-  }
-  if (gameComplete === true) {
-    gameCompleteUpdates(gameResult)
+    // who is the current player
+    const currentPlayer = currentPlayerIs()
+    // which square was clicked
+    const clickedSquare = $(this).attr('id')
+    console.log('player', currentPlayer, 'clicked square', clickedSquare)
+    // check if square is open
+    if (isSquareOpen(clickedSquare) === true) {
+      // change the square value to the player symbol
+      updateSquare(currentPlayer, clickedSquare)
+      // check for a win (if true: updates gameComplete and gameResult)
+      didPlayerWin(currentPlayer, clickedSquare)
+      // update game data on server
+      updateGame(currentPlayer, clickedSquare, gameComplete)
+      // change the turn indicator to other player
+      updatePlayerTurn(currentPlayer)
+      // check for a draw
+      wasGameDrawn(movesPlayed)
+    }
+  } else if (gameComplete === true) {
+    // update display to show game result
+    displayGameResult(gameResult)
   }
   console.log('movesPlayed is', movesPlayed)
   console.log('gameResult is', gameResult)
   console.log('gameComplete is', gameComplete)
-  console.log('-------------------------')
 }
 
 const resetGameBoard = function () {
   for (let i = 0; i < 9; i++) {
-    $('#' + i + ' > p').text('')
+    $('#' + i + ' > p').text(null)
+    $('#' + i).css('cursor', 'pointer')
   }
   $('#turn-indicator').text('x')
   $('#game-outcome-info > p').text('')

@@ -14,6 +14,19 @@ const newGame = function () {
   })
 }
 
+const updateGame = function (data) {
+  console.log('in game-api > app.js > updateGame > store.game is ', store.game)
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
-  newGame
+  newGame,
+  updateGame
 }
