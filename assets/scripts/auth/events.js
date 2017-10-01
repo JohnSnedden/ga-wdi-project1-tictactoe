@@ -1,6 +1,7 @@
 'use strict'
 
 const getFormFields = require(`../../../lib/get-form-fields`)
+const moves = require('../game-engine/moves.js')
 
 const api = require('./api')
 const ui = require('./ui')
@@ -35,6 +36,9 @@ const onSignOut = function (event) {
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
+  moves.resetGameBoard()
+  $('#sessionScoreX > p').text(0)
+  $('#sessionScoreO > p').text(0)
 }
 
 const addHandlers = function () {
