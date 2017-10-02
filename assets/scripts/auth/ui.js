@@ -42,6 +42,8 @@ const signOutSuccess = function () {
   store.user = null
   $('#nav-bar').addClass('hidden')
   $('#game-grid-div').addClass('hidden')
+  $('#session-score-div').addClass('hidden')
+  $('#player-turn-div').addClass('hidden')
   $('#sign-in-div').removeClass('hidden')
 }
 
