@@ -17,14 +17,23 @@ I am utilizing a [Trello board](https://trello.com/b/ckiOYB2Z/wdi-project-1-tic-
 
 ## Built With
 
-*
+* javascript
+* jQuery
+* bootstrap
 
 
 ## Unsolved Problems
 
-*
+* sizing and placement of the auth forms
 
 
 ## Acknowledgements
-
-*
+The wonderful consultants at GA:
+* Jordan Alain
+* Jess Cornman-Homonoff
+* Scott Davidson
+* Michael Finneran
+* Toni Langley
+* Chris Payne
+* Caleb Pearce
+* Maria Inés Peniche

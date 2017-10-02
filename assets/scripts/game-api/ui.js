@@ -5,7 +5,6 @@ const store = require('../store.js')
 const newGameSuccess = function (data) {
   $('#message').text('New game started!')
   store.game = data.game
-  console.log('store.game is ', store.game)
   $('#game-outcome-div').addClass('hidden')
   $('#session-score-div').removeClass('hidden')
   $('#player-turn-div').removeClass('hidden')
@@ -20,7 +19,6 @@ const newGameFailure = function (error) {
 const updateGameSuccess = function (data) {
   $('#message').text('Game updated sussessfully')
   store.game = data.game
-  console.log('store.game is ', store.game)
 }
 
 const updateGameFailure = function (error) {
@@ -31,8 +29,6 @@ const updateGameFailure = function (error) {
 const playerGamesCompleteSuccess = function (data) {
   $('#message').text('Game data retrieved sussessfully')
   store.gamesComplete = data
-  const playerGamesCompleted = store.gamesComplete.games.length
-  console.log('gamesComplete length is ', playerGamesCompleted)
 }
 
 const playerGamesCompleteFailure = function (error) {
@@ -45,9 +41,6 @@ const playerGamesAllSuccess = function (data) {
   store.gamesAll = data
   const playerGamesPlayed = store.gamesAll.games.length
   const playerGamesCompleted = store.gamesComplete.games.length
-  console.log('gamesAll length is ', playerGamesPlayed)
-  // const statsText = 'You started ' + playerGamesPlayed + ' games, and completed ' + playerGamesCompleted + ' of them'
-  // console.log('statsText is: ', statsText)
   $('#playerStats > p').text('You have started ' + playerGamesPlayed + ' games, of which you completed ' + playerGamesCompleted + ' games.')
 }
 

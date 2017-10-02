@@ -9,7 +9,6 @@ let gameResult = null
 let movesPlayed = 0
 
 const onPlayerMove = function (event) {
-  console.log('----- NEW CLICK DATA STARTS HERE -----')
   // clear message text
   $('#message').text('')
   // identify current player
@@ -31,11 +30,6 @@ const onPlayerMove = function (event) {
   const updateSquare = function (currentPlayer, clickedSquare) {
     $('#' + clickedSquare + ' > p').text(currentPlayer)
     movesPlayed++
-    // also change mouseover behavior for played square *** not working correctly so commented out ***
-    // $('#' + clickedSquare).mouseleave(function () {
-    //   $('#' + clickedSquare).css('cursor', 'not-allowed')
-    //   console.log('mouseleave happened')
-    // })
   }
 
   // change cursor to 'not-allowed' for all squares
@@ -112,7 +106,6 @@ const onPlayerMove = function (event) {
     const currentPlayer = currentPlayerIs()
     // which square was clicked
     const clickedSquare = $(this).attr('id')
-    console.log('player', currentPlayer, 'clicked square', clickedSquare)
     // check if square is open
     if (isSquareOpen(clickedSquare) === true) {
       // change the square value to the player symbol
@@ -129,9 +122,6 @@ const onPlayerMove = function (event) {
       }
     }
   }
-  console.log('movesPlayed is', movesPlayed)
-  console.log('gameResult is', gameResult)
-  console.log('gameComplete is', gameComplete)
 }
 
 const resetGameBoard = function () {
