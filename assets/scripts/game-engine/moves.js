@@ -10,6 +10,8 @@ let movesPlayed = 0
 
 const onPlayerMove = function (event) {
   console.log('----- NEW CLICK DATA STARTS HERE -----')
+  // clear message text
+  $('#message').text('')
   // identify current player
   const currentPlayerIs = function () {
     const currentPlayerIndicator = $('#turn-indicator').text()
@@ -52,6 +54,8 @@ const onPlayerMove = function (event) {
 
   const displayGameResult = function (gameResult) {
     $('#game-outcome-info > p').text(gameResult)
+    $('#player-turn-div').addClass('hidden')
+    $('#game-outcome-div').removeClass('hidden')
   }
 
   // did player win?

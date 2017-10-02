@@ -3,9 +3,13 @@
 const store = require('../store.js')
 
 const newGameSuccess = function (data) {
-  $('#message').text('New game created sussessfully')
+  $('#message').text('New game started!')
   store.game = data.game
   console.log('store.game is ', store.game)
+  $('#game-outcome-div').addClass('hidden')
+  $('#session-score-div').removeClass('hidden')
+  $('#player-turn-div').removeClass('hidden')
+  $('#game-grid-div').removeClass('hidden')
 }
 
 const newGameFailure = function (error) {

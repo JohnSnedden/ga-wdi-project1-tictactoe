@@ -9,7 +9,6 @@ const ui = require('./ui')
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('in events.js data is', data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -41,11 +40,25 @@ const onSignOut = function (event) {
   $('#sessionScoreO > p').text(0)
 }
 
+const onNewUser = function () {
+  event.preventDefault()
+  $('#sign-in-div').addClass('hidden')
+  $('#sign-up-div').removeClass('hidden')
+}
+
+const onChangePasswordBtn = function () {
+  event.preventDefault()
+  $('#change-password-div').removeClass('hidden')
+  $('#change-password-btn').addClass('hidden')
+}
+
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
+  $('#new-user').click(onNewUser)
+  $('#change-password-btn').click(onChangePasswordBtn)
 }
 
 // $('#authModal').on('show.bs.modal', function (event) {
