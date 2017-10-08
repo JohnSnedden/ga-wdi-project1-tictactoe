@@ -11,8 +11,7 @@ const newGameSuccess = function (data) {
   $('#game-grid-div').removeClass('hidden')
 }
 
-const newGameFailure = function (error) {
-  console.error(error)
+const newGameFailure = function () {
   $('#message').text('Error starting new game')
 }
 
@@ -21,8 +20,7 @@ const updateGameSuccess = function (data) {
   store.game = data.game
 }
 
-const updateGameFailure = function (error) {
-  console.error(error)
+const updateGameFailure = function () {
   $('#message').text('Error updating game data on server')
 }
 
@@ -31,8 +29,7 @@ const playerGamesCompleteSuccess = function (data) {
   store.gamesComplete = data
 }
 
-const playerGamesCompleteFailure = function (error) {
-  console.error(error)
+const playerGamesCompleteFailure = function () {
   $('#message').text('Error retrieving game stats')
 }
 
@@ -44,8 +41,7 @@ const playerGamesAllSuccess = function (data) {
   $('#playerStats > p').text('You have started ' + playerGamesPlayed + ' games, of which you completed ' + playerGamesCompleted + ' games.')
 }
 
-const playerGamesAllFailure = function (error) {
-  console.error(error)
+const playerGamesAllFailure = function () {
   $('#message').text('Error retrieving game stats')
 }
 

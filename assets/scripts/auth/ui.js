@@ -9,8 +9,7 @@ const signUpSuccess = function (data) {
   $('#sign-in-div').removeClass('hidden')
 }
 
-const signUpFailure = function (error) {
-  console.error(error)
+const signUpFailure = function () {
   $('#message').text('Error on sign up')
 }
 
@@ -21,8 +20,7 @@ const signInSuccess = function (data) {
   $('#nav-bar').removeClass('hidden')
 }
 
-const signInFailure = function (error) {
-  console.error(error)
+const signInFailure = function () {
   $('#message').text('Error on sign in')
 }
 
@@ -32,8 +30,7 @@ const changePasswordSuccess = function () {
   $('#change-password-btn').removeClass('hidden')
 }
 
-const changePasswordFailure = function (error) {
-  console.error(error)
+const changePasswordFailure = function () {
   $('#message').text('Error changing password')
 }
 
@@ -47,8 +44,7 @@ const signOutSuccess = function () {
   $('#sign-in-div').removeClass('hidden')
 }
 
-const signOutFailure = function (error) {
-  console.error(error)
+const signOutFailure = function () {
   $('#message').text('Error Signing Out')
 }
 
