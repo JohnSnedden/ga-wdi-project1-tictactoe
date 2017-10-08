@@ -16,7 +16,7 @@ const newGameFailure = function () {
 }
 
 const updateGameSuccess = function (data) {
-  $('#message').text('Game updated sussessfully')
+  $('#message').text('Game updated successfully')
   store.game = data.game
 }
 
@@ -25,7 +25,7 @@ const updateGameFailure = function () {
 }
 
 const playerGamesCompleteSuccess = function (data) {
-  $('#message').text('Game data retrieved sussessfully')
+  $('#message').text('Game data retrieved successfully')
   store.gamesComplete = data
 }
 
@@ -34,7 +34,7 @@ const playerGamesCompleteFailure = function () {
 }
 
 const playerGamesAllSuccess = function (data) {
-  $('#message').text('Game data retrieved sussessfully')
+  $('#message').text('Game data retrieved successfully')
   store.gamesAll = data
   const playerGamesPlayed = store.gamesAll.games.length
   const playerGamesCompleted = store.gamesComplete.games.length

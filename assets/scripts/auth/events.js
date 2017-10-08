@@ -46,10 +46,22 @@ const onNewUser = function () {
   $('#sign-up-div').removeClass('hidden')
 }
 
+const onNewUserCancel = function () {
+  event.preventDefault()
+  $('#sign-up-div').addClass('hidden')
+  $('#sign-in-div').removeClass('hidden')
+}
+
 const onChangePasswordBtn = function () {
   event.preventDefault()
   $('#change-password-div').removeClass('hidden')
   $('#change-password-btn').addClass('hidden')
+}
+
+const onChangePasswordCancel = function () {
+  event.preventDefault()
+  $('#change-password-btn').removeClass('hidden')
+  $('#change-password-div').addClass('hidden')
 }
 
 const addHandlers = function () {
@@ -58,7 +70,9 @@ const addHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('#new-user').click(onNewUser)
+  $('#new-user-cancel').click(onNewUserCancel)
   $('#change-password-btn').click(onChangePasswordBtn)
+  $('#change-password-cancel').click(onChangePasswordCancel)
 }
 
 module.exports = {

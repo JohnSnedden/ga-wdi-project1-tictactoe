@@ -14,10 +14,11 @@ const signUpFailure = function () {
 }
 
 const signInSuccess = function (data) {
-  $('#message').text('Signed in sussessfully')
+  $('#message').text('Signed in successfully')
   store.user = data.user
   $('#sign-in-div').addClass('hidden')
   $('#nav-bar').removeClass('hidden')
+
 }
 
 const signInFailure = function () {
@@ -25,7 +26,7 @@ const signInFailure = function () {
 }
 
 const changePasswordSuccess = function () {
-  $('#message').text('Password changed sussessfully')
+  $('#message').text('Password changed successfully')
   $('#change-password-div').addClass('hidden')
   $('#change-password-btn').removeClass('hidden')
 }
@@ -35,12 +36,13 @@ const changePasswordFailure = function () {
 }
 
 const signOutSuccess = function () {
-  $('#message').text('Sign Out sussessfull')
+  $('#message').text('Sign Out successfully')
   store.user = null
   $('#nav-bar').addClass('hidden')
   $('#game-grid-div').addClass('hidden')
   $('#session-score-div').addClass('hidden')
   $('#player-turn-div').addClass('hidden')
+  $('#change-password-div').addClass('hidden')
   $('#sign-in-div').removeClass('hidden')
 }
 
