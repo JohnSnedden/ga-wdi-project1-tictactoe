@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+
+    <body>
+
+      <nav class="navbar navbar-default navbar-expand navbar-inverse">
+        <div class="container-fluid">
+
+          <div class="navbar-header">
+            <a class="navbar-brand">Tic-Tac-Toe</a>
+          </div>
+
+          <div class="navbar-expand">
+            <ul class="nav navbar-nav navbar-right" style="cursor: pointer">
+              <li class="nav-item dropdown hidden" id="nav-user-dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicons glyphicons-user" aria-hidden="true">User</span> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li id="nav-user-dropdown-game-stats"><a>My Game Stats</a></li>
+                  <li id="nav-user-dropdown-change-password"><a>Change password</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li id="nav-user-dropdown-sign-out"><a>Sign Out</a></li>
+                </ul>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+      </nav>
+
+      <div class="container-fluid header-container">
+        <!-- <div class="row text-center">
+          <div class="col-12 header-content">
+            <h1>Tic-Tac-Toe</h1>
+          </div>
+        </div> -->
+        <div class="row btn-bar hidden" id="btn-bar">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <form id="new-game">
+              <input class="btn btn-success btn-block" type="submit" value="New Game">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="container-fluid info-container text-center">
+        <div class="row hidden" id="session-score-div">
+          <div class="col-xs-1 col-sm-1 col-md-1 d-inline-block x-icon">
+            <p>x</p>
+          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 d-inline-block x-score" id="sessionScoreX">
+            <p>0</p>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 d-inline-block o-icon">
+            <p>o</p>
+          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 d-inline-block o-score" id="sessionScoreO">
+            <p>0</p>
+          </div>
+        </div>
+        <div class="row hidden alert-info" id="player-turn-div">
+          <div class="col-12 turn-indicator" id="player-turn-info">
+            <p>Player <span id=turn-indicator>x</span> Turn</p>
+          </div>
+        </div>
+        <div class="row hidden" id="game-outcome-div">
+          <div class="col-12 bg-success game-outcome container-fluid" id="game-outcome-info">
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="container-fluid hidden game-board text-center" id="game-grid-div">
+        <div class="row justify-content-md-center">
+          <div class="col-xs-4 col-sm-4 col-md-4 box gameSquare" id="0" style="cursor: pointer">
+            <p></p>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 box gameSquare" id="1" style="cursor: pointer">
+            <p></p>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 box gameSquare" id="2" style="cursor: pointer">
+            <p></p>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-xs-4 col-sm-4 col-md-4 box gameSquare" id="3" style="cursor: pointer">
+            <p></p>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 box gameSquare" id="4" style="cursor: pointer">
+            <p></p>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 box gameSquare" id="5" style="cursor: pointer">
+            <p></p>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-xs-4 col-sm-4 col-md-4 box gameSquare" id="6" style="cursor: pointer">
+            <p></p>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 box gameSquare" id="7" style="cursor: pointer">
+            <p></p>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 box gameSquare" id="8" style="cursor: pointer">
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="container-fluid text-center messages-div">
+        <div class="row">
+          <div class="col-12">
+            <section id="message"></section>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid clear" id="playerStats">
+        <p></p>
+      </div>
+
+      <div class="container-fluid auth-forms" id="auth">
+
+        <div class="row" id="sign-in-div">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <form id="sign-in">
+              <h3>Sign in</h3>
+              <p>Please sign in to play Tic-Tac-Toe</p>
+              <br>
+              <div class="form-group">
+                <label for="sign-in-email">Email</label>
+                <input type="email" class="form-control" id="sign-in-email" name="credentials[email]" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="sign-in-password">Password</label>
+                <input type="password" class="form-control" id="sign-in-password" name="credentials[password]" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-primary" name="submit">Sign in</button>
+            </form>
+            <br>
+            <a id="new-user">New user?</a>
+            <br>
+            <br>
+          </div>
+        </div>
+
+        <div class="row hidden" id="sign-up-div">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <form id="sign-up">
+              <h3>Sign up</h3>
+              <p>Create your Tic-Tac-Toe account</p>
+              <br>
+              <div class="form-group">
+                <label for="sign-up-email">Email</label>
+                <input type="email" class="form-control" id="sign-up-email" name="credentials[email]" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="sign-up-password">Password</label>
+                <input type="password" class="form-control" id="sign-up-password" name="credentials[password]" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="sign-up-password-conf">Password confirmation</label>
+                <input type="password" class="form-control" id="sign-up-password-conf" name="credentials[password_confirmation]" placeholder="Re-enter password">
+              </div>
+              <button type="submit" class="btn btn-primary" name="submit">Sign up</button>
+              <button type="button" class="btn btn-secondary" id="new-user-cancel" name="cancel">Cancel</button>
+              <br>
+              <br>
+            </form>
+          </div>
+        </div>
+
+        <div class="row hidden" id="change-password-div">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <form id="change-password">
+              <h3>Change Password</h3>
+              <p></p>
+              <br>
+              <div class="form-group">
+                <label for="change-password-old">Current password</label>
+                <input type="password" class="form-control" id="change-password-old" name="passwords[old]" placeholder="Current password">
+              </div>
+              <div class="form-group">
+                <label for="change-password-new">New password</label>
+                <input type="password" class="form-control" id="change-password-new" name="passwords[new]" placeholder="new password">
+              </div>
+              <button type="submit" class="btn btn-primary" name="submit">Change Password</button>
+              <button type="button" class="btn btn-secondary" id="change-password-cancel" name="cancel">Cancel</button>
+              <br>
+              <br>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container-fluid footer text-center">
+        <div class="row">
+          <div class="col-12">
+            <p>made in Boston by john</p>
+          </div>
+        </div>
+      </div>
+
+    </body>
+</html>
