@@ -38,6 +38,7 @@ const onSignOut = function (event) {
   moves.resetGameBoard()
   $('#sessionScoreX > p').text(0)
   $('#sessionScoreO > p').text(0)
+  $('#nav-user-dropdown-change-password').removeClass('disabled')
 }
 
 const onNewUser = function () {
@@ -55,23 +56,25 @@ const onNewUserCancel = function () {
 const onChangePasswordBtn = function () {
   event.preventDefault()
   $('#change-password-div').removeClass('hidden')
-  $('#change-password-btn').addClass('hidden')
+  $('#nav-user-dropdown-change-password').addClass('disabled')
 }
 
 const onChangePasswordCancel = function () {
   event.preventDefault()
-  $('#change-password-btn').removeClass('hidden')
+  $('#nav-user-dropdown-change-password').removeClass('disabled')
   $('#change-password-div').addClass('hidden')
 }
 
 const addHandlers = function () {
-  $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
+  $('#sign-up').on('submit', onSignUp)
   $('#change-password').on('submit', onChangePassword)
-  $('#sign-out').on('submit', onSignOut)
+
   $('#new-user').click(onNewUser)
   $('#new-user-cancel').click(onNewUserCancel)
-  $('#change-password-btn').click(onChangePasswordBtn)
+
+  $('#nav-user-dropdown-sign-out').click(onSignOut)
+  $('#nav-user-dropdown-change-password').click(onChangePasswordBtn)
   $('#change-password-cancel').click(onChangePasswordCancel)
 }
 

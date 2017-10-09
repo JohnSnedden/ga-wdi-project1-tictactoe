@@ -25,7 +25,7 @@ const onPlayerStats = function (event) {
 
 const addHandlers = function () {
   $('#new-game').on('submit', onNewGame)
-  $('#player-stats').on('submit', onPlayerStats)
+  $('#nav-user-dropdown-game-stats').click(onPlayerStats)
 }
 
 module.exports = {

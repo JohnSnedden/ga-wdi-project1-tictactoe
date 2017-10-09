@@ -14,40 +14,49 @@
 
     <body>
 
+      <nav class="navbar navbar-default navbar-expand navbar-inverse">
+        <div class="container-fluid">
+
+          <div class="navbar-header">
+            <a class="navbar-brand">Tic-Tac-Toe</a>
+          </div>
+
+          <div class="navbar-expand">
+            <ul class="nav navbar-nav navbar-right" style="cursor: pointer">
+              <li class="nav-item dropdown hidden" id="nav-user-dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicons glyphicons-user" aria-hidden="true">User</span> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li id="nav-user-dropdown-game-stats"><a>My Game Stats</a></li>
+                  <li id="nav-user-dropdown-change-password"><a>Change password</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li id="nav-user-dropdown-sign-out"><a>Sign Out</a></li>
+                </ul>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+      </nav>
+
       <div class="container-fluid header-container">
-        <div class="row text-center">
+        <!-- <div class="row text-center">
           <div class="col-12 header-content">
             <h1>Tic-Tac-Toe</h1>
           </div>
-        </div>
-        <nav class="row nav-bar hidden" id="nav-bar">
-          <div class="col-xs-6 col-sm-6 col-md-6">
+        </div> -->
+        <div class="row btn-bar hidden" id="btn-bar">
+          <div class="col-xs-12 col-sm-12 col-md-12">
             <form id="new-game">
-              <input type="submit" value="New Game">
+              <input class="btn btn-success btn-block" type="submit" value="New Game">
             </form>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-6">
-            <form id="player-stats">
-              <input type="submit" value="My Game Stats">
-            </form>
-          </div>
-          <div class="col-xs-6 col-sm-6 col-md-6" id="sign-out-div">
-            <form id="sign-out">
-              <!-- <fieldset>
-                <legend>Sign Out</legend> -->
-                <input type="submit" name="submit" value="Sign Out">
-              <!-- </fieldset> -->
-            </form>
-          </div>
-
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <form id="change-password-btn">
-              <input type="submit" name="submit" value="Change Password">
-            </form>
-          </div>
-
-        </nav>
+        </div>
       </div>
+
+      <br>
 
       <div class="container-fluid info-container text-center">
         <div class="row hidden" id="session-score-div">
@@ -77,6 +86,8 @@
           </div>
         </div>
       </div>
+
+      <br>
 
       <div class="container-fluid hidden game-board text-center" id="game-grid-div">
         <div class="row justify-content-md-center">
@@ -144,7 +155,7 @@
                 <label for="sign-in-password">Password</label>
                 <input type="password" class="form-control" id="sign-in-password" name="credentials[password]" placeholder="Password">
               </div>
-              <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+              <button type="submit" class="btn btn-primary" name="submit">Sign in</button>
             </form>
             <br>
             <a id="new-user">New user?</a>

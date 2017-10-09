@@ -17,8 +17,8 @@ const signInSuccess = function (data) {
   $('#message').text('Signed in successfully')
   store.user = data.user
   $('#sign-in-div').addClass('hidden')
-  $('#nav-bar').removeClass('hidden')
-
+  $('#btn-bar').removeClass('hidden')
+  $('#nav-user-dropdown').removeClass('hidden')
 }
 
 const signInFailure = function () {
@@ -28,7 +28,7 @@ const signInFailure = function () {
 const changePasswordSuccess = function () {
   $('#message').text('Password changed successfully')
   $('#change-password-div').addClass('hidden')
-  $('#change-password-btn').removeClass('hidden')
+  $('#nav-user-dropdown-change-password').removeClass('disabled')
 }
 
 const changePasswordFailure = function () {
@@ -38,11 +38,13 @@ const changePasswordFailure = function () {
 const signOutSuccess = function () {
   $('#message').text('Sign Out successfully')
   store.user = null
-  $('#nav-bar').addClass('hidden')
+  $('#btn-bar').addClass('hidden')
   $('#game-grid-div').addClass('hidden')
   $('#session-score-div').addClass('hidden')
   $('#player-turn-div').addClass('hidden')
   $('#change-password-div').addClass('hidden')
+  $('#nav-user-dropdown').addClass('hidden')
+  $('#game-outcome-div').addClass('hidden')
   $('#sign-in-div').removeClass('hidden')
 }
 
